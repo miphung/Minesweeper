@@ -87,7 +87,20 @@ public class MSButton
     public void mousePressed () 
     {
         clicked = true;
-        //your code here
+        if(keyPressed==true)
+            marked =! marked;
+        if(!marked==false)
+            clicked=false;
+        else if(bombs.contains(this))
+            displayLosingMessage();
+        else if(countBombs(r,c)>0)
+            setLabel(Integer.toString(countBombs(r,c)));
+        else{
+            if(c>0 && buttons[r][c-1].isMarked())
+                buttons[r][c-1].mousePressed();
+            if(c<20 && buttons[r][c+1].isMarked())
+                buttons[r][c+1].mousePressed();
+        } 
     }
 
     public void draw () 
