@@ -43,8 +43,15 @@ public void draw ()
 }
 public boolean isWon()
 {
-    //your code here
-    return false;
+    for(int i=0; i<buttons[r].length; i++)
+    {
+        for(int j=0; j<buttons[c].length; j++)
+        {
+            if(bombs.contains(buttons[row][col]).isMarked())
+                return false;
+        }
+    }
+    return true;
 }
 public void displayLosingMessage()
 {
@@ -100,6 +107,18 @@ public class MSButton
                 buttons[r][c-1].mousePressed();
             if(c<20 && buttons[r][c+1].isMarked())
                 buttons[r][c+1].mousePressed();
+            if(r>0 && buttons[r-1][c].isMarked())
+                buttons[r-1][c].mousePressed();
+            if(r<20 && buttons[r+1][c].isMarked())
+                buttons[r+1][c].mousePressed();
+            if(r>0 && c>0 && buttons[r-1][c-1].isMarked())
+                buttons[r-1][c-1].mousePressed();
+            if(r<20 && c<20 && buttons[r+1][c+1].isMarked())
+                buttons[r+1][c+1].mousePressed();
+            if(r<20 && c>0 && buttons[r+1][c-1].isMarked())
+                buttons[r+1][c-1].mousePressed();
+            if(r>0 && c<20 && buttons[r-1][c+1].isMarked())
+                buttons[r-1][c+1].mousePressed();
         } 
     }
 
