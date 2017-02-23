@@ -1,4 +1,3 @@
-
 import de.bezier.guido.*;
 //Declare and initialize NUM_ROWS and NUM_COLS = 20
 public final static int NUM_COLS = 20;
@@ -22,7 +21,7 @@ void setup ()
             buttons [r] [c] = new MSButton(r,c);
         }
     }
-    for (int i=0; i<200; i++)
+    for (int i=0; i<10; i++)
     {
         setBombs();  
     }
@@ -43,11 +42,11 @@ public void draw ()
 }
 public boolean isWon()
 {
-    for(int i=0; i<buttons[r].length; i++)
+    for(int i=0; i<NUM_ROWS; i++)
     {
-        for(int j=0; j<buttons[c].length; j++)
+        for(int j=0; j<NUM_COLS; j++)
         {
-            if(bombs.contains(buttons[row][col]).isMarked())
+            if(bombs.contains(this))
                 return false;
         }
     }
@@ -102,7 +101,8 @@ public class MSButton
             displayLosingMessage();
         else if(countBombs(r,c)>0)
             setLabel(Integer.toString(countBombs(r,c)));
-        else{
+        else
+        {
             if(c>0 && buttons[r][c-1].isMarked())
                 buttons[r][c-1].mousePressed();
             if(c<20 && buttons[r][c+1].isMarked())
