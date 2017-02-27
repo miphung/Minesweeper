@@ -21,7 +21,7 @@ void setup ()
             buttons [r] [c] = new MSButton(r,c);
         }
     }
-    for (int i=0; i<10; i++)
+    for (int i=0; i<20; i++)
     {
         setBombs();  
     }
@@ -42,19 +42,20 @@ public void draw ()
 }
 public boolean isWon()
 {
-    for(int i=0; i<NUM_ROWS; i++)
-    {
-        for(int j=0; j<NUM_COLS; j++)
-        {
-            if(bombs.contains(this))
-                return false;
-        }
-    }
+    // for(int i=0; i<NUM_ROWS; i++)
+    // {
+    //     for(int j=0; j<NUM_COLS; j++)
+    //     {
+    //         if(bombs.contains(this))
+    //             return false;
+    //     }
+    // }
     return true;
 }
 public void displayLosingMessage()
 {
-    //your code here
+    if(bombs.contains(this).isClicked())
+        text("You lose!");
 }
 public void displayWinningMessage()
 {
@@ -93,8 +94,8 @@ public class MSButton
     public void mousePressed () 
     {
         clicked = true;
-        if(keyPressed==true)
-            marked =! marked;
+        if(keyPressed)
+            marked =!marked;
         if(!marked==false)
             clicked=false;
         else if(bombs.contains(this))
@@ -103,21 +104,21 @@ public class MSButton
             setLabel(Integer.toString(countBombs(r,c)));
         else
         {
-            if(c>0 && buttons[r][c-1].isMarked())
+            if(c>0 && buttons[r][c-1].clicked ==false)
                 buttons[r][c-1].mousePressed();
-            if(c<20 && buttons[r][c+1].isMarked())
+            if(c<19 && buttons[r][c+1].clicked ==false)
                 buttons[r][c+1].mousePressed();
-            if(r>0 && buttons[r-1][c].isMarked())
+            if(r>0 && buttons[r-1][c].clicked ==false)
                 buttons[r-1][c].mousePressed();
-            if(r<20 && buttons[r+1][c].isMarked())
+            if(r<19 && buttons[r+1][c].clicked ==false)
                 buttons[r+1][c].mousePressed();
-            if(r>0 && c>0 && buttons[r-1][c-1].isMarked())
+            if(r>0 && c>0 && buttons[r-1][c-1].clicked ==false)
                 buttons[r-1][c-1].mousePressed();
-            if(r<20 && c<20 && buttons[r+1][c+1].isMarked())
+            if(r<19 && c<19 && buttons[r+1][c+1].clicked ==false)
                 buttons[r+1][c+1].mousePressed();
-            if(r<20 && c>0 && buttons[r+1][c-1].isMarked())
+            if(r<19 && c>0 && buttons[r+1][c-1].clicked ==false)
                 buttons[r+1][c-1].mousePressed();
-            if(r>0 && c<20 && buttons[r-1][c+1].isMarked())
+            if(r>0 && c<19 && buttons[r-1][c+1].clicked ==false)
                 buttons[r-1][c+1].mousePressed();
         } 
     }
