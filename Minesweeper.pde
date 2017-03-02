@@ -21,7 +21,7 @@ void setup ()
             buttons [r] [c] = new MSButton(r,c);
         }
     }
-    for (int i=0; i<3; i++)
+    for (int i=0; i<15; i++)
     {
         setBombs();  
     }
@@ -54,6 +54,17 @@ public boolean isWon()
 }
 public void displayLosingMessage()
 {
+    for(int r = 0; r < NUM_ROWS; r++)
+    {
+        for(int c = 0; c < NUM_COLS; c++)
+        {
+            if(bombs.contains(buttons[r][c]))
+            {
+                buttons[r][c].clicked = true;
+                // break buttons[r][c].mousePressed();
+            }
+        }
+    }
     buttons[10][6].setLabel("Y");
     buttons[10][7].setLabel("o");
     buttons[10][8].setLabel("u");
@@ -62,14 +73,7 @@ public void displayLosingMessage()
     buttons[10][12].setLabel("s");
     buttons[10][13].setLabel("e");
     buttons[10][14].setLabel("!");
-    for(int r = 0; r <= NUM_ROWS; r++)
-    {
-        for(int c = 0; c <= NUM_COLS; c++)
-        {
-            if(bombs.contains(buttons[r][c]))
-                buttons[r][c].setClicked;
-        }
-    }
+
 }
 public void displayWinningMessage()
 {
@@ -121,7 +125,7 @@ public class MSButton
         else if(bombs.contains(this))
             displayLosingMessage();
         else if(countBombs(r,c)>0)
-            setLabel(Integer.toString(countBombs(r,c)));
+            setLabel(("" + countBombs(r,c)));
         else
         {
             if(c>0 && buttons[r][c-1].clicked ==false)
@@ -161,10 +165,6 @@ public class MSButton
     public void setLabel(String newLabel)
     {
         label = newLabel;
-    }
-    public void setClicked(boolean c)
-    {
-        clicked = c;
     }
     public boolean isValid(int r, int c)
     {
