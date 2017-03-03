@@ -1,14 +1,14 @@
 body {
-    background-color: rgb(200,200,200);
+    background-color: rgb(224,224,224);
     color: rgb(0,0,0);
-    font-family: "Open Sans", sans-serif;
+    font-family: "Play", sans-serif;
     text-align: center;
 }
 
 #content {
     display: block;
     margin-left: auto;
-    margin-right: auto
+    margin-right: auto;
 }
 
 header {
@@ -18,4 +18,33 @@ header {
 footer {
 	font-style: italic;
 	font-size: 90%;
+    margin-left: auto;
+    margin-right: auto;
 }
+@keyframes dance{
+  from{
+      left: -80%;
+    }
+  }
+@-webkit-keyframes dance{
+  from{
+      left: 80%;
+      left: -80%;
+    }
+  }
+@-moz-keyframes dance{
+  from{
+      left: 80%;
+      left: -80%;
+    }
+  }
+img{
+  animation: dance 4s infinite;
+  -webkit-animation: dance 4s infinite;
+  -moz-animation: dance 4s infinite;
+  position:absolute;
+  height: 200px;
+  width:200px;
+  top:620px;
+  left:100%;
+  }
